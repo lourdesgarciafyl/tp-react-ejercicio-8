@@ -1,7 +1,14 @@
 import { Form, Col, Row, Button } from "react-bootstrap";
+
 const Formulario = () => {
+    const enviarFormulario = () => {
+
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    }
     return(
-        <Form id="formDatos">
+        <Form id="formDatos" onSubmit={handleSubmit}>
         <Row>
           <Col md={6} className="mt-2">
             <Form.Label>Nombre *</Form.Label>
@@ -20,7 +27,7 @@ const Formulario = () => {
             <Form.Control type="email" placeholder="lourdesgarciafyl@gmail.com" required minLength={3} maxLength={50} />
           </Col>
         </Row>
-        <Button className="mt-3" variant="primary" type="submit">
+        <Button className="mt-3" variant="primary" type="submit" onClick={enviarFormulario}>
         Enviar
       </Button>
       </Form>
