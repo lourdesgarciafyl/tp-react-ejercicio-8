@@ -62,14 +62,11 @@ const Formulario = () => {
             required 
             {...register(`dni`, {
               required: "Campo obligatorio",
-              minLength:{
-                value: 6,
-                message: "Cantidad minima de caracteres: 6"
-              },
-              maxLength:{
-                value:9,
-                message: "Cantidad maxima de caracteres: 9"
-              }})}/>
+              pattern:{
+                value: /^[\d]{1,3}\.?[\d]{3,3}\.?[\d]{3,3}$/,
+                message: "Debe ingresar un DNI de entre 7 a 9 caracteres"
+              }
+              })}/>
               <Form.Text className="text-danger">{errors.dni?.message}</Form.Text>
             </Form.Group>
           </Col>
