@@ -1,11 +1,9 @@
-import { Form, Col, Row, Button } from "react-bootstrap";
+import { Form, Col, Row, Button, FormText } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-const Formulario = () => {
-    const { register, handleSubmit} = useForm()
-  
-    const enviarFormulario = () => {
 
-    }
+const Formulario = () => {
+    const { register, formState: {errors}, reset , handleSubmit} = useForm()
+  
     const apretarEnviar = (data) => {
       console.log(data)
       reset()
@@ -21,9 +19,18 @@ const Formulario = () => {
             type="text" 
             placeholder="María Lourdes" 
             required 
-            minLength={3} 
-            maxLength={50}
-            {...register(`nombre`)}/>
+            {...register(`nombre`,{
+              required: "Campo obligatorio",
+              minLength:{
+                value: 3,
+                message: "Cantidad minima de caracteres: 3"
+              },
+              maxLength:{
+                value: 50,
+                message: "Cantidad maxima de caracteres: 50"
+              }
+              })}/>
+              <Form.Text className="text-danger">{errors.nombre?.message}</Form.Text>
             </Form.Group>
           </Col>
           <Col md={6} className="mt-2">
@@ -33,9 +40,14 @@ const Formulario = () => {
             type="text" 
             placeholder="García" 
             required 
-            minLength={3} 
-            maxLength={50}
-            {...register(`apellido`)} />
+            {...register(`apellido`,{
+              required: true,
+              minLength:{
+                value: 3,
+              },
+              maxLength:{
+                value: 50,
+              }})} />
             </Form.Group>
           </Col>
           <Col md={6} className="mt-2">
@@ -44,10 +56,17 @@ const Formulario = () => {
             <Form.Control 
             type="number" 
             placeholder="41061228" 
-            required 
-            minLength={3} 
+            minLength={6}
             maxLength={9}
-            {...register(`dni`)}/>
+            required 
+            {...register(`dni`, {
+              required: true,
+              minLength:{
+                value: 6
+              },
+              maxLength:{
+                value:9
+              }})}/>
             </Form.Group>
           </Col>
           <Col md={6} className="mt-2">
@@ -57,13 +76,19 @@ const Formulario = () => {
             type="email" 
             placeholder="lourdesgarciafyl@gmail.com" 
             required 
-            minLength={3} 
-            maxLength={50} 
-            {...register(`email`)}/>
+            {...register(`email`, {
+              required: true,
+              minLength:{
+                value: 3,
+              },
+              maxLength:{
+                value: 50,
+              }
+              })}/>
             </Form.Group>
           </Col>
         </Row>
-        <Button className="mt-3" variant="primary" type="submit" onClick={enviarFormulario}>
+        <Button className="mt-3" variant="primary" type="submit">
         Enviar
       </Button>
       </Form>
