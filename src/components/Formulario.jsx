@@ -79,13 +79,12 @@ const Formulario = () => {
             required 
             {...register(`email`, {
               required: true,
-              minLength:{
-                value: 3,
-              },
-              maxLength:{
-                value: 50,
+              pattern:{
+                value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                message: "Ingrese una dirección de mail correcta"
               }
               })}/>
+              <Form.Text className="text-danger">{errors.email?.message}</Form.Text>
             </Form.Group>
           </Col>
         </Row>
