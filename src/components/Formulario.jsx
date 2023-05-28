@@ -16,7 +16,7 @@ const Formulario = () => {
     }
 
     return(
-        <Form id="formDatos" onSubmit={handleSubmit(apretarEnviar)}>
+        <Form noValidate id="formDatos" onSubmit={handleSubmit(apretarEnviar)}>
         <Row>
           <Col md={6} className="mt-2">
             <Form.Group controlId="validaronNombre">
@@ -84,7 +84,7 @@ const Formulario = () => {
             placeholder="lourdesgarciafyl@gmail.com" 
             required 
             {...register(`email`, {
-              required: true,
+              required: "Campo obligatorio",
               pattern:{
                 value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
                 message: "Ingrese una dirección de mail correcta"
