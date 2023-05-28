@@ -1,5 +1,6 @@
 import { Form, Col, Row, Button, FormText } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import Swal from 'sweetalert2'
 
 const Formulario = () => {
     const { register, formState: {errors}, reset , handleSubmit} = useForm()
