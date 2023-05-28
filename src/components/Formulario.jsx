@@ -7,6 +7,11 @@ const Formulario = () => {
   
     const apretarEnviar = (data) => {
       console.log(data)
+      Swal.fire(
+        "Formulario enviado correctamente",
+        "El formulario fue enviado",
+        "success"
+      )
       reset()
     }
 
