@@ -41,13 +41,16 @@ const Formulario = () => {
             placeholder="García" 
             required 
             {...register(`apellido`,{
-              required: true,
+              required: "Campo obligatorio",
               minLength:{
                 value: 3,
+                message: "Cantidad minima de caracteres: 3"
               },
               maxLength:{
                 value: 50,
+                message: "Cantidad maxima de caracteres: 50"
               }})} />
+              <Form.Text className="text-danger">{errors.apellido?.message}</Form.Text>
             </Form.Group>
           </Col>
           <Col md={6} className="mt-2">
@@ -56,17 +59,18 @@ const Formulario = () => {
             <Form.Control 
             type="number" 
             placeholder="41061228" 
-            minLength={6}
-            maxLength={9}
             required 
             {...register(`dni`, {
-              required: true,
+              required: "Campo obligatorio",
               minLength:{
-                value: 6
+                value: 6,
+                message: "Cantidad minima de caracteres: 6"
               },
               maxLength:{
-                value:9
+                value:9,
+                message: "Cantidad maxima de caracteres: 9"
               }})}/>
+              <Form.Text className="text-danger">{errors.dni?.message}</Form.Text>
             </Form.Group>
           </Col>
           <Col md={6} className="mt-2">
